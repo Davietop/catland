@@ -93,13 +93,14 @@ const Executives = () => {
       title: "Head of Credit",
     },
     {
-      name: "Olufawo Olúnike Saoliat",
-      title: "Head of Internal Audit",
-    },
-    {
       name: "Mrs Oluwo Olayinka Abosede",
       title: "Company Secretary",
     },
+    {
+      name: "Mrs Olufawo Olúnike Saoliat",
+      title: "Head of Internal Audit",
+    },
+    
   ];
 
   return (
