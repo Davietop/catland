@@ -3,7 +3,7 @@
 import React from "react";
 import { IBM_Plex_Sans } from "next/font/google";
 import Image from "next/image";
-import { motion } from "framer-motion";
+import { motion, type Variants } from "framer-motion";
 
 const ibmPlexSans = IBM_Plex_Sans({
   subsets: ["latin"],
@@ -12,17 +12,27 @@ const ibmPlexSans = IBM_Plex_Sans({
 });
 
 // Animation Variants
-const fadeInUp = {
-  hidden: { opacity: 0, y: 40 },
-  visible: { 
-    opacity: 1, 
-    y: 0, 
-    transition: { duration: 0.6, ease: "easeOut" } 
+const fadeInUp: Variants = {
+  hidden: {
+    opacity: 0,
+    y: 40,
+  },
+
+  visible: {
+    opacity: 1,
+    y: 0,
+    transition: {
+      duration: 0.6,
+      ease: "easeOut",
+    },
   },
 };
 
-const staggerContainer = {
-  hidden: { opacity: 0 },
+const staggerContainer: Variants = {
+  hidden: {
+    opacity: 0,
+  },
+
   visible: {
     opacity: 1,
     transition: {
@@ -43,7 +53,7 @@ const Executives = () => {
     },
     {
       name: "Asiwaju Kunle Kalejaye SAN",
-      title: "(Chairman Board of Directors)",
+      title: "Chairman, Board of Directors",
     },
     {
       name: "Chief C.A Ogunkoya",
@@ -62,27 +72,27 @@ const Executives = () => {
   const executive = [
     {
       name: "Mr Odegbemi Benjamin O",
-      title: "(Managing Director)",
+      title: "Managing Director",
     },
     {
       name: "Mrs Sodipo Abosede Oyindamola",
-      title: "(Branch Manager)",
+      title: "Branch Manager",
     },
     {
       name: "Mr Adebajo Abiodun Emmanuel",
-      title: "(Head of Operations)",
+      title: "Head of Operations",
     },
     {
       name: "Mrs Akinwande Abosede",
-      title: "(Head of IT)",
+      title: "Head of IT",
     },
     {
       name: "Mr Adeola Taiwo",
-      title: "(Head of Credit)",
+      title: "Head of Credit",
     },
     {
       name: "Mrs Oluwo Olayinka Abosede",
-      title: "(Company Secretary)",
+      title: "Company Secretary",
     },
   ];
 
@@ -91,12 +101,14 @@ const Executives = () => {
       className={`${ibmPlexSans.className} bg-white px-4 py-16 sm:px-6 lg:px-10 lg:py-24`}
     >
       <div className="mx-auto max-w-7xl">
+
         {/* =====================================================
             BOARD OF DIRECTORS
         ====================================================== */}
+
         <div>
           {/* Section Heading */}
-          <motion.div 
+          <motion.div
             className="max-w-3xl"
             initial="hidden"
             whileInView="visible"
@@ -119,57 +131,59 @@ const Executives = () => {
           </motion.div>
 
           {/* Board Grid */}
-          <motion.div 
+          <motion.div
             className="mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-3"
             initial="hidden"
             whileInView="visible"
             viewport={{ once: true, amount: 0.1 }}
             variants={staggerContainer}
           >
-            {directors?.map(({ name, title }, index) => {
-              return (
-                <motion.div
-                  key={index}
-                  variants={fadeInUp}
-                  className="group overflow-hidden rounded-3xl border border-gray-200 bg-white transition-all duration-300 hover:-translate-y-1 hover:shadow-xl"
-                >
-                  {/* Image */}
-                  <div className="relative aspect-[4/4.5] overflow-hidden bg-[#39246a]/5">
-                    <div className="flex h-full items-center justify-center text-sm text-gray-400">
-                      <Image
-                        src={`/direc_${index + 1}.jpeg`}
-                        alt={`Director ${index + 1}`}
-                        fill
-                        className="object-cover transition-transform duration-500 group-hover:scale-105"
-                      />
-                    </div>
+            {directors.map(({ name, title }, index) => (
+              <motion.div
+                key={name}
+                variants={fadeInUp}
+                className="group overflow-hidden rounded-3xl border border-gray-200 bg-white transition-all duration-300 hover:-translate-y-1 hover:shadow-xl"
+              >
+                {/* Image */}
+                <div className="relative aspect-[4/4.5] overflow-hidden bg-[#39246a]/5">
+                  <Image
+                    src={`/direc_${index + 1}.jpeg`}
+                    alt={name}
+                    fill
+                    sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
+                    className="object-cover object-top transition-transform duration-500 group-hover:scale-105"
+                  />
 
-                    {/* Number */}
-                    <div className="absolute left-5 top-5 flex h-9 w-9 items-center justify-center rounded-full bg-white/90 text-xs font-semibold text-[#39246a] shadow-sm">
-                      0{index + 1}
-                    </div>
+                  {/* Number */}
+                  <div className="absolute left-5 top-5 flex h-9 w-9 items-center justify-center rounded-full bg-white/90 text-xs font-semibold text-[#39246a] shadow-sm">
+                    {String(index + 1).padStart(2, "0")}
                   </div>
+                </div>
 
-                  {/* Details */}
-                  <div className="p-6 sm:p-7">
-                    <h3 className="text-xl font-bold text-gray-900">{name}</h3>
-                    <p className="mt-1 text-sm font-medium text-[#39246a]">
-                      {title}
-                    </p>
-                    <div className="mt-5 h-px bg-gray-100" />
-                  </div>
-                </motion.div>
-              );
-            })}
+                {/* Details */}
+                <div className="p-6 sm:p-7">
+                  <h3 className="text-xl font-bold text-gray-900">
+                    {name}
+                  </h3>
+
+                  <p className="mt-1 text-sm font-medium text-[#39246a]">
+                    {title}
+                  </p>
+
+                  <div className="mt-5 h-px bg-gray-100" />
+                </div>
+              </motion.div>
+            ))}
           </motion.div>
         </div>
 
         {/* =====================================================
             EXECUTIVE MANAGEMENT
         ====================================================== */}
+
         <div className="mt-24 border-t border-gray-100 pt-20 lg:mt-32">
           {/* Section Heading */}
-          <motion.div 
+          <motion.div
             className="grid gap-6 lg:grid-cols-[1fr_0.8fr] lg:items-end"
             initial="hidden"
             whileInView="visible"
@@ -194,42 +208,48 @@ const Executives = () => {
           </motion.div>
 
           {/* Executive Grid */}
-          <motion.div 
+          <motion.div
             className="mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-4"
             initial="hidden"
             whileInView="visible"
             viewport={{ once: true, amount: 0.1 }}
             variants={staggerContainer}
           >
-            {executive?.map(({ name, title }, index) => {
-              return (
-                <motion.div key={index} variants={fadeInUp} className="group">
-                  <div className="relative aspect-[3/3.5] overflow-hidden rounded-3xl bg-[#39246a]/5">
-                    <div className="flex h-full items-center justify-center text-sm text-gray-400">
-                      <Image
-                        src={`/exec_${index + 1}.jpg`}
-                        alt={`Executive ${index + 1}`}
-                        fill
-                        className="object-cover transition-transform duration-500 group-hover:scale-105"
-                      />
-                    </div>
+            {executive.map(({ name, title }, index) => (
+              <motion.div
+                key={name}
+                variants={fadeInUp}
+                className="group"
+              >
+                {/* Image */}
+                <div className="relative aspect-[3/3.5] overflow-hidden rounded-3xl bg-[#39246a]/5">
+                  <Image
+                    src={`/exec_${index + 1}.jpg`}
+                    alt={name}
+                    fill
+                    sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 25vw"
+                    className="object-cover object-top transition-transform duration-500 group-hover:scale-105"
+                  />
 
-                    <div className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-black/60 to-transparent p-5 pt-16">
-                      <span className="text-xs font-medium uppercase tracking-wider text-white/70">
-                        Executive Management
-                      </span>
-                    </div>
+                  <div className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-black/60 to-transparent p-5 pt-16">
+                    <span className="text-xs font-medium uppercase tracking-wider text-white/70">
+                      Executive Management
+                    </span>
                   </div>
+                </div>
 
-                  <div className="px-2 pt-5">
-                    <h3 className="text-lg font-bold text-gray-900">{name}</h3>
-                    <p className="mt-1 text-sm font-medium text-[#39246a]">
-                      {title}
-                    </p>
-                  </div>
-                </motion.div>
-              );
-            })}
+                {/* Details */}
+                <div className="px-2 pt-5">
+                  <h3 className="text-lg font-bold text-gray-900">
+                    {name}
+                  </h3>
+
+                  <p className="mt-1 text-sm font-medium text-[#39246a]">
+                    {title}
+                  </p>
+                </div>
+              </motion.div>
+            ))}
           </motion.div>
         </div>
       </div>

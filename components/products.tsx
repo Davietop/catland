@@ -1,7 +1,7 @@
 "use client"; // Required if you are using Next.js App Router
 
 import React from "react";
-import { motion } from "framer-motion";
+import { motion, type Variants } from "framer-motion";
 import {
   PiggyBank,
   Banknote,
@@ -25,7 +25,7 @@ const ibmPlexSans = IBM_Plex_Sans({
 // --- ANIMATION VARIANTS ---
 
 // Controls the staggered timing of the cards
-const containerVariants = {
+const containerVariants: Variants = {
   hidden: { opacity: 0 },
   visible: {
     opacity: 1,
@@ -36,7 +36,7 @@ const containerVariants = {
 };
 
 // Controls the actual animation of each individual card
-const itemVariants = {
+const itemVariants: Variants = {
   hidden: { opacity: 0, y: 30 },
   visible: {
     opacity: 1,
@@ -50,7 +50,7 @@ const itemVariants = {
 };
 
 // Controls the header text animation
-const headerVariants = {
+const headerVariants: Variants = {
   hidden: { opacity: 0, y: -20 },
   visible: {
     opacity: 1,
@@ -137,9 +137,10 @@ const ProductsServices = () => {
   ];
 
   return (
-    <section className={`${ibmPlexSans.className} py-16 bg-white overflow-hidden`}>
+    <section
+      className={`${ibmPlexSans.className} py-16 bg-white overflow-hidden`}
+    >
       <div className="mx-auto max-w-8xl px-4 sm:px-6 lg:px-8">
-        
         {/* Animated Header */}
         <motion.div
           className="mb-12"
@@ -148,17 +149,14 @@ const ProductsServices = () => {
           viewport={{ once: true, amount: 0.3 }}
           variants={headerVariants}
         >
-          
-
-           
           <h2 className="text-2xl lg:text-3xl font-bold text-slate-900 mb-3 drop-shadow-sm">
-           Financial Services
+            Financial Services
           </h2>
+
           <p className="text-sm uppercase tracking-widest text-slate-600 font-semibold">
-                Comprehensive financial solutions tailored to support your personal
+            Comprehensive financial solutions tailored to support your personal
             growth and business success.
           </p>
-       
         </motion.div>
 
         {/* Animated Grid Container */}
@@ -173,7 +171,7 @@ const ProductsServices = () => {
             <motion.div
               key={index}
               variants={itemVariants}
-              whileHover={{ y: -8 }} // Lifts the card up slightly on hover
+              whileHover={{ y: -8 }}
               className="w-full md:w-[calc(50%-1rem)] lg:w-[calc(25%-1.5rem)] flex flex-col bg-white rounded-xl p-6 border border-gray-100 shadow-sm hover:shadow-xl transition-shadow duration-300 group cursor-pointer"
             >
               <div
@@ -181,9 +179,11 @@ const ProductsServices = () => {
               >
                 {service.icon}
               </div>
+
               <h3 className="text-xl font-semibold text-gray-900 mb-2">
                 {service.title}
               </h3>
+
               <p className="text-gray-600 leading-relaxed flex-grow">
                 {service.description}
               </p>

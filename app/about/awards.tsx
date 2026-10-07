@@ -1,15 +1,16 @@
 "use client";
 
 import Image from "next/image";
-import { Award, Calendar, ArrowUpRight } from "lucide-react";
-import { motion } from "framer-motion";
+import { Award, Calendar } from "lucide-react";
+import { motion, type Variants } from "framer-motion";
 
 const awards = [
   {
     year: "2021",
     title: "The Best Microfinance Bank in Ogun State",
     category: "Award of Excellence",
-    organization: "Scholars Communications Publishers of First Focus Magazine",
+    organization:
+      "Scholars Communications Publishers of First Focus Magazine",
     description:
       "Recognised for contributions toward grassroots development in Ogun State.",
     image: "/award_1.jpeg",
@@ -18,7 +19,8 @@ const awards = [
     year: "Campus Best Award 8.0",
     title: "Most Student Friendly Microfinance Bank of the Year",
     category: "Campus Best Award",
-    organization: "Ogun State Polytechnic of Health and Allied Sciences",
+    organization:
+      "Ogun State Polytechnic of Health and Allied Sciences",
     description:
       "Recognised by students for Catland's impact and support on campus.",
     image: "/award_2.jpeg",
@@ -27,7 +29,8 @@ const awards = [
     year: "2024",
     title: "Honorary Award",
     category: "Honorary Recognition",
-    organization: "Nigeria Union of Teachers, Ijebu North East Branch",
+    organization:
+      "Nigeria Union of Teachers, Ijebu North East Branch",
     description:
       "Recognised for outstanding contributions and unwavering economic support to teachers in the local government.",
     image: "/award_3.jpeg",
@@ -36,7 +39,8 @@ const awards = [
     year: "Recognition",
     title: "Award of Appreciation",
     category: "Appreciation Award",
-    organization: "National Association of Microfinance Banks, Ogun State",
+    organization:
+      "National Association of Microfinance Banks, Ogun State",
     description:
       "Recognised for Catland's commitment toward human capacity development.",
     image: "/award_4.jpeg",
@@ -52,18 +56,28 @@ const awards = [
   },
 ];
 
-// Animation Variants
-const fadeInUp = {
-  hidden: { opacity: 0, y: 40 },
-  visible: { 
-    opacity: 1, 
-    y: 0, 
-    transition: { duration: 0.6, ease: "easeOut" } 
+/* Animation Variants */
+const fadeInUp: Variants = {
+  hidden: {
+    opacity: 0,
+    y: 40,
+  },
+
+  visible: {
+    opacity: 1,
+    y: 0,
+    transition: {
+      duration: 0.6,
+      ease: "easeOut",
+    },
   },
 };
 
-const staggerContainer = {
-  hidden: { opacity: 0 },
+const staggerContainer: Variants = {
+  hidden: {
+    opacity: 0,
+  },
+
   visible: {
     opacity: 1,
     transition: {
@@ -76,9 +90,9 @@ export default function AwardsSection() {
   return (
     <section className="w-full bg-white py-16 sm:py-20 lg:py-24">
       <div className="mx-auto max-w-7xl px-5 sm:px-8 lg:px-10">
-        
+
         {/* Header */}
-        <motion.div 
+        <motion.div
           className="mx-auto max-w-3xl text-center"
           initial="hidden"
           whileInView="visible"
@@ -95,14 +109,14 @@ export default function AwardsSection() {
           </h2>
 
           <p className="mt-5 text-sm leading-7 tracking-wide text-gray-600 sm:text-base">
-            Our commitment to responsible banking, financial inclusion, customer
-            service and sustainable growth continues to earn recognition across
-            the financial sector.
+            Our commitment to responsible banking, financial inclusion,
+            customer service and sustainable growth continues to earn
+            recognition across the financial sector.
           </p>
         </motion.div>
 
         {/* Featured Award */}
-        <motion.div 
+        <motion.div
           className="mt-14 overflow-hidden rounded-[2rem] bg-[#39246a]"
           initial="hidden"
           whileInView="visible"
@@ -110,6 +124,7 @@ export default function AwardsSection() {
           variants={fadeInUp}
         >
           <div className="grid lg:grid-cols-2">
+
             {/* Image */}
             <div className="relative min-h-[320px] sm:min-h-[420px] lg:min-h-[500px]">
               <Image
@@ -137,8 +152,8 @@ export default function AwardsSection() {
               </h3>
 
               <p className="mt-5 text-sm leading-7 text-white/75 sm:text-base">
-                Catland Microfinance Bank was recognised for its contributions
-                toward grassroots development in Ogun State.
+                Catland Microfinance Bank was recognised for its
+                contributions toward grassroots development in Ogun State.
               </p>
 
               <div className="mt-8 flex items-start gap-3">
@@ -150,8 +165,10 @@ export default function AwardsSection() {
                   <p className="text-xs uppercase tracking-wider text-white/50">
                     Presented by
                   </p>
+
                   <p className="mt-1 text-sm font-semibold leading-6 text-white">
-                    Scholars Communications Publishers of First Focus Magazine
+                    Scholars Communications Publishers of First Focus
+                    Magazine
                   </p>
                 </div>
               </div>
@@ -161,7 +178,8 @@ export default function AwardsSection() {
 
         {/* Awards Grid */}
         <div className="mt-14">
-          <motion.div 
+
+          <motion.div
             className="mb-7 flex items-end justify-between gap-4"
             initial="hidden"
             whileInView="visible"
@@ -172,13 +190,14 @@ export default function AwardsSection() {
               <p className="text-sm font-semibold uppercase tracking-[0.18em] text-[#39246a]">
                 Our Recognition
               </p>
+
               <h3 className="mt-2 text-2xl font-bold text-gray-900 sm:text-3xl">
                 Awards & Achievements
               </h3>
             </div>
           </motion.div>
 
-          <motion.div 
+          <motion.div
             className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3"
             initial="hidden"
             whileInView="visible"
@@ -191,6 +210,7 @@ export default function AwardsSection() {
                 variants={fadeInUp}
                 className="group overflow-hidden rounded-3xl border border-gray-200 bg-white transition-all duration-300 hover:-translate-y-1 hover:border-[#39246a]/20 hover:shadow-xl"
               >
+
                 {/* Image */}
                 <div className="relative aspect-[4/3] overflow-hidden bg-gray-100">
                   <Image
@@ -201,8 +221,8 @@ export default function AwardsSection() {
                     className="object-cover object-center transition-transform duration-500 group-hover:scale-105"
                   />
 
-                  {/* Year / Award */}
-                  <div className="absolute left-4 top-4 rounded-full bg-white/95 px-3 py-1.5 text-xs font-bold text-[#39246a] shadow-sm">
+                  {/* Year */}
+                  <div className="absolute left-4 top-4 max-w-[85%] rounded-full bg-white/95 px-3 py-1.5 text-xs font-bold text-[#39246a] shadow-sm">
                     {award.year}
                   </div>
                 </div>
@@ -231,7 +251,7 @@ export default function AwardsSection() {
         </div>
 
         {/* Bottom Statement */}
-        <motion.div 
+        <motion.div
           className="mt-14 rounded-3xl border border-[#39246a]/10 bg-[#39246a]/5 px-6 py-8 text-center sm:px-10"
           initial="hidden"
           whileInView="visible"
@@ -244,7 +264,7 @@ export default function AwardsSection() {
             opportunities for the communities we serve.
           </p>
         </motion.div>
-        
+
       </div>
     </section>
   );
