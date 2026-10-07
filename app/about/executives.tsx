@@ -44,14 +44,6 @@ const staggerContainer: Variants = {
 const Executives = () => {
   const directors = [
     {
-      name: "Mr Otunba Sola Mogaji, FCA",
-      title: "Director",
-    },
-    {
-      name: "Alhaji Rasaki Muritala, Bsc, FCA, FCTI",
-      title: "Director",
-    },
-    {
       name: "Asiwaju Kunle Kalejaye SAN",
       title: "Chairman, Board of Directors",
     },
@@ -60,13 +52,23 @@ const Executives = () => {
       title: "Director",
     },
     {
-      name: "Mr Micheal Owope FCA",
-      title: "Independent Director",
+      name: "Mr Otunba Sola Mogaji, FCA",
+      title: "Director",
     },
     {
+      name: "Alhaji Rasaki Muritala, Bsc, FCA, FCTI",
+      title: "Director",
+    },
+  {
       name: "Mr Sunmola J. Olawale MCIB, FCIB",
       title: "Director",
     },
+  
+    {
+      name: "Mr Micheal Owope FCA",
+      title: "Independent Director",
+    },
+   
   ];
 
   const executive = [
@@ -89,6 +91,10 @@ const Executives = () => {
     {
       name: "Mr Adeola Taiwo",
       title: "Head of Credit",
+    },
+    {
+      name: "Olufawo Olúnike Saoliat",
+      title: "Head of Internal Audit",
     },
     {
       name: "Mrs Oluwo Olayinka Abosede",
@@ -147,7 +153,7 @@ const Executives = () => {
                 {/* Image */}
                 <div className="relative aspect-[4/4.5] overflow-hidden bg-[#39246a]/5">
                   <Image
-                    src={`/direc_${index + 1}.jpeg`}
+                    src={`/director_${index + 1}.jpeg`}
                     alt={name}
                     fill
                     sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
